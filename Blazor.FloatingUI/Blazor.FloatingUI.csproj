@@ -10,9 +10,16 @@
     <Company>$(Authors)</Company>
     <Description>A C# wrapper for JavaScript library to position floating elements and create interactions for them.</Description>
     <PackageIcon>Icon.png</PackageIcon>
-    <PackageReadmeFile>REAME.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>Blazor,Floating,FloatinUI,UI,Dropdown,Combobox</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 
   <ItemGroup>
