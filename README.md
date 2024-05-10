@@ -4,6 +4,18 @@ All documentation on this site and parameters were taken from this documentation
 
 [Visit FloatingUI website](https://floating-ui.com/)
 
+### Installation
+
+`dotnet add package Blazor.FloatingUI`
+
+Program.cs
+
+`builder.Services.AddScoped<FloatingJsProvider>();`
+
+MainLayout.razor
+
+Add `@layout FluentLayout`
+
 ### Description
 
 This is a barebones library that provides access to the `FloatingUI` library and facilitates the transfer of float elements to the end of the document.
