@@ -1,0 +1,40 @@
+﻿@using Blazor.FloatingUI.Models
+
+<FloatingWrapper IsOpen="_isOpen">
+    <TriggerTemplate>
+        <button @onclick="() => _isOpen = true"
+                id="@context">
+            CLICK ME @_index
+        </button>
+    </TriggerTemplate>
+    <ContentTemplate>
+        <div id="@context"
+             class="floating__content__wrapper"
+             tabindex="0"
+             @onblur="() => _isOpen = false">
+            <ul>
+                @foreach (var item in Enumerable.Range(0, 10))
+                {
+                    <li tabindex="@item"
+                        @onclick="() => ClickHandler(item)">
+                        Item @item
+                    </li>
+                }
+            </ul>
+        </div>
+    </ContentTemplate>
+</FloatingWrapper>
+
+@code {
+
+    private bool _isOpen;
+
+    private int _index;
+
+    private async Task ClickHandler(int index)
+    {
+        _index = index;
+        _isOpen = false;
+    }
+
+}

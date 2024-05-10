@@ -1,0 +1,142 @@
+@using Blazor.FloatingUI.Models
+@using Microsoft.AspNetCore.Components.Sections
+
+@TriggerTemplate(TriggerId)
+
+@if (IsOpen)
+{
+    <SectionContent SectionId="FloatingLaout.FloatingSection">
+        <FloatingContentWrapper ContentId="@ContentId"
+                                TriggerId="@TriggerId"
+                                Settings="_settings">
+            @ContentTemplate(ContentId)
+        </FloatingContentWrapper>
+    </SectionContent>
+}
+
+@code {
+
+    private string TriggerId => $"T{GetHashCode()}";
+    private string ContentId => $"C{GetHashCode()}";
+
+    private FloatingSettingsModel _settings = FloatingSettingsModel.Default;
+
+    #region Props
+
+    [Parameter] public required RenderFragment<string> TriggerTemplate { get; set; }
+    [Parameter] public required RenderFragment<string> ContentTemplate { get; set; }
+    [Parameter] public bool IsOpen { get; set; }
+
+    /// <summary>
+    /// <see cref="FloatingStrategyType"/>
+    /// </summary>
+    [Parameter]
+    public string? Strategy
+    {
+        get => _settings.Strategy;
+        set => _settings.Strategy = value;
+    }
+
+    /// <summary>
+    /// <see cref="FloatingPlacementType"/>
+    /// </summary>
+    [Parameter]
+    public string? Placement
+    {
+        get => _settings.Placement;
+        set => _settings.Placement = value;
+    }
+
+    [Parameter]
+    public bool AutoPlacement
+    {
+        get => _settings.AutoPlacement;
+        set => _settings.AutoPlacement = value;
+    }
+
+    [Parameter]
+    public int? Offset
+    {
+        get => _settings.Offset;
+        set => _settings.Offset = value;
+    }
+
+    [Parameter]
+    public bool Flip
+    {
+        get => _settings.Flip;
+        set => _settings.Flip = value;
+    }
+
+    [Parameter]
+    public string? ArrowId
+    {
+        get => _settings.ArrowId;
+        set => _settings.ArrowId = value;
+    }
+
+    [Parameter]
+    public bool Hide
+    {
+        get => _settings.Hide;
+        set => _settings.Hide = value;
+    }
+
+    [Parameter]
+    public string? Width
+    {
+        get => _settings.Width;
+        set => _settings.Width = value;
+    }
+
+    [Parameter]
+    public OffsetModel? OffsetModel
+    {
+        get => _settings.OffsetModel;
+        set => _settings.OffsetModel = value;
+    }
+
+    [Parameter]
+    public bool Size
+    {
+        get => _settings.Size;
+        set => _settings.Size = value;
+    }
+
+    [Parameter]
+    public bool AnimationFrame
+    {
+        get => _settings.AnimationFrame;
+        set => _settings.AnimationFrame = value;
+    }
+
+    [Parameter]
+    public bool LayoutShift
+    {
+        get => _settings.LayoutShift;
+        set => _settings.LayoutShift = value;
+    }
+
+    [Parameter]
+    public bool ElementResize
+    {
+        get => _settings.ElementResize;
+        set => _settings.ElementResize = value;
+    }
+
+    [Parameter]
+    public bool AncestorResize
+    {
+        get => _settings.AncestorResize;
+        set => _settings.AncestorResize = value;
+    }
+
+    [Parameter]
+    public bool AncestorScroll
+    {
+        get => _settings.AncestorScroll;
+        set => _settings.AncestorScroll = value;
+    }
+
+    #endregion
+}

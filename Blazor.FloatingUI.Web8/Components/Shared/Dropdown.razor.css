@@ -1,0 +1,7 @@
+﻿.floating__content__wrapper {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    box-sizing: border-box;
+    overflow: auto;
+}

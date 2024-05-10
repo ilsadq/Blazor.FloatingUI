@@ -1,0 +1,28 @@
+@implements IAsyncDisposable
+
+@ChildContent
+
+@code {
+
+    [Parameter] public required RenderFragment ChildContent { get; set; }
+    [Parameter, EditorRequired] public required string ContentId { get; set; }
+    [Parameter, EditorRequired] public required string TriggerId { get; set; }
+    [Parameter, EditorRequired] public required FloatingSettingsModel Settings { get; set; }
+
+    [Inject] public required FloatingJsProvider FloatingJs { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await FloatingJs.ComputePosition(ContentId, TriggerId, Settings);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await FloatingJs.DisposeAsync();
+    }
+
+}
