@@ -14,7 +14,7 @@ Program.cs
 
 MainLayout.razor
 
-Add `@layout FluentLayout`
+Add `@layout FloatingLayout`
 
 ### Description
 
