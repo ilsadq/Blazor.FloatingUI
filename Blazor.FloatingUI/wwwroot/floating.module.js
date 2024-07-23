@@ -86,8 +86,6 @@ export function computePosition(contentId, triggerId, settings) {
         elementResize: settings.elementResize,
         ancestorResize: settings.ancestorResize
     });
-
-    if (settings.focus) content.focus();
 }
 
 export function clean() {
