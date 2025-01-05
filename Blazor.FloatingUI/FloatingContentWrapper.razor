@@ -17,12 +17,13 @@
         {
             await FloatingJs.ComputePosition(ContentId, TriggerId, Settings);
         }
+
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    public async ValueTask DisposeAsync()
+    public ValueTask DisposeAsync()
     {
-        await FloatingJs.DisposeAsync();
+        return FloatingJs.DisposeAsync();
     }
 
 }

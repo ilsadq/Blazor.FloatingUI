@@ -1,7 +1,7 @@
 ﻿namespace Blazor.FloatingUI;
 
-public static class FloatingStrategyType
+public readonly record struct FloatingStrategyType
 {
-    public static string Absolute = "absolute";
-    public static string Fixed = "fixes";
+    public const string Absolute = "absolute";
+    public const string Fixed = "fixes";
 }

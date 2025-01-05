@@ -1,6 +1,6 @@
 ﻿namespace Blazor.FloatingUI;
 
-public static class FloatingPlacementType
+public readonly record struct FloatingPlacementType
 {
     public const string Auto = "auto";
     public const string AutoStart = "auto-start";
