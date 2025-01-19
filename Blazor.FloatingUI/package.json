@@ -16,7 +16,6 @@
     "path": "^0.12.7"
   },
   "dependencies": {
-    "@floating-ui/core": "1.6.9",
     "@floating-ui/dom": "1.6.13"
   }
 }
