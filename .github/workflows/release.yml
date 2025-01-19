@@ -1,4 +1,4 @@
-name: Upload dotnet package
+name: Build and Publish .NET Package
 
 on:
   release:
@@ -11,15 +11,22 @@ jobs:
       packages: write
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
-          source-url: https://nuget.pkg.github.com/adequate/index.json
+
+      - name: Build the project
+        run: dotnet build --configuration Release
+
+      - name: Pack the project
+        run: dotnet pack --configuration Release --output ./artifacts src/Blazor.FloatingUI
+
+      - name: Publish package to GitHub Packages
+        run: dotnet nuget push ./artifacts/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build --configuration Release src/Blazor.FloatingUI 
-      - name: Create the package
-        run: dotnet pack --configuration Release src/Blazor.FloatingUI
-      - name: Publish the package to GPR
-        run: dotnet nuget push src/Blazor.FloatingUI --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY 
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
