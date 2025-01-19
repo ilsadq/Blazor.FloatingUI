@@ -26,7 +26,7 @@ jobs:
         run: dotnet pack --configuration Release --output ./artifacts src/Blazor.FloatingUI
 
       - name: Publish package to GitHub Packages
-        run: dotnet nuget push ./artifacts/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ./artifacts/*.nupkg --source "github" --api-key ${{ secrets.NUGET_API_KEY }}
         env:
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
 
