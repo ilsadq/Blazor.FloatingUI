@@ -13,13 +13,11 @@ jobs:
         dotnet-version: [ '8.0.x' ]
 
     steps:
-      - name: Check current directory
-        run: | 
-          pwd
-          ls
-
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Go to project directory
+        run: cd src/Blazor.FloatingUI
 
       - name: Setup .NET ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v3
