@@ -70,4 +70,3 @@ Basic `FloatingWrapper` example where there are no enhancements such as focus ch
 ```
 
 If you need additional information, feel free to ask.
-

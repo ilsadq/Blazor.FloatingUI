@@ -12,6 +12,9 @@
         <PackageIcon>Icon.png</PackageIcon>
         <PackageTags>Blazor,Floating,FloatinUI,UI,Dropdown,Combobox</PackageTags>
         <Version>1.1.0</Version>
+        <PackageProjectUrl>https://github.com/ilsadq/Blazor.FloatingUI</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/ilsadq/Blazor.FloatingUI</RepositoryUrl>
+        <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
     </PropertyGroup>
 
 
@@ -34,12 +37,6 @@
         <None Update="wwwroot\FocusTrapScripts.razor.js">
             <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="..\..\README.md">
-            <Link>README.md</Link>
-        </Content>
     </ItemGroup>
 
 </Project>
