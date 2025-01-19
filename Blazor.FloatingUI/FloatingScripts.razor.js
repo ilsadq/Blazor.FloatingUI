@@ -1,7 +1,7 @@
 import * as FloatingCore from "@floating-ui/dom";
 
-window.blazorFloatingUi.listeners ??= new WeakMap();
 window.blazorFloatingUi = {};
+window.blazorFloatingUi.listeners ??= new WeakMap();
 
 /**
  * @param {string} contentId

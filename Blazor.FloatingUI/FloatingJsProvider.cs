@@ -20,7 +20,7 @@ public class FloatingJsProvider(IJSRuntime js) : IFloatingJsProvider
     /// </param>
     public ValueTask ComputePosition(string contentId, string triggerId, FloatingSettingsModel settings)
     {
-        return js.InvokeVoidAsync("blazorFloatingUI.computePosition", contentId, triggerId, settings);
+        return js.InvokeVoidAsync("blazorFloatingUi.computePosition", contentId, triggerId, settings);
     }
 
     /// <summary>
@@ -29,6 +29,6 @@ public class FloatingJsProvider(IJSRuntime js) : IFloatingJsProvider
     /// <param name="id">Target element ID</param>
     public ValueTask Remove(string id)
     {
-        return js.InvokeVoidAsync("blazorFloatingUI.clearAutoUpdate", id);
+        return js.InvokeVoidAsync("blazorFloatingUi.removeListener", id);
     }
 }
