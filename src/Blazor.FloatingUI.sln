@@ -4,7 +4,7 @@ VisualStudioVersion = 17.10.34814.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FloatingUI", "Blazor.FloatingUI\Blazor.FloatingUI.csproj", "{1910D771-7B7A-427D-AA9C-D6D1053C1FD4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.FloatingUI.Web8", "Blazor.FloatingUI.Web8\Blazor.FloatingUI.Web8.csproj", "{E9C9C836-7A1E-4B84-B2A9-C7D0A092CF13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.FloatingUI.Web8", "..\examples\Blazor.FloatingUI.Web8\Blazor.FloatingUI.Web8.csproj", "{86891465-1E8E-4E39-95C6-6A7AAEADA7DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +16,10 @@ Global
 		{1910D771-7B7A-427D-AA9C-D6D1053C1FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1910D771-7B7A-427D-AA9C-D6D1053C1FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1910D771-7B7A-427D-AA9C-D6D1053C1FD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9C9C836-7A1E-4B84-B2A9-C7D0A092CF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9C9C836-7A1E-4B84-B2A9-C7D0A092CF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9C9C836-7A1E-4B84-B2A9-C7D0A092CF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9C9C836-7A1E-4B84-B2A9-C7D0A092CF13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86891465-1E8E-4E39-95C6-6A7AAEADA7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86891465-1E8E-4E39-95C6-6A7AAEADA7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86891465-1E8E-4E39-95C6-6A7AAEADA7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86891465-1E8E-4E39-95C6-6A7AAEADA7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,10 +1,16 @@
-﻿@using Blazor.FloatingUI.Models
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
 
 <FloatingWrapper IsOpen="_isOpen">
     <TriggerTemplate>
         <button @onclick="() => _isOpen = true"
                 id="@context">
-            CLICK ME @_index
+            CLICK ME
         </button>
     </TriggerTemplate>
     <ContentTemplate>
@@ -15,8 +21,7 @@
             <ul>
                 @foreach (var item in Enumerable.Range(0, 10))
                 {
-                    <li tabindex="@item"
-                        @onclick="() => ClickHandler(item)">
+                    <li @onclick="ClickHandler">
                         Item @item
                     </li>
                 }
@@ -29,11 +34,8 @@
 
     private bool _isOpen;
 
-    private int _index;
-
-    private async Task ClickHandler(int index)
+    private void ClickHandler()
     {
-        _index = index;
         _isOpen = false;
     }
 

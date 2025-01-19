@@ -56,3 +56,12 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+
+.floating__content__wrapper {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    box-sizing: border-box;
+    overflow: auto;
+}

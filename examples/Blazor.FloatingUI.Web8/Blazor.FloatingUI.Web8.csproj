@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blazor.FloatingUI\Blazor.FloatingUI.csproj" />
+    <ProjectReference Include="..\..\src\Blazor.FloatingUI\Blazor.FloatingUI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Shared\Dropdown.razor" />
   </ItemGroup>
 
 </Project>
