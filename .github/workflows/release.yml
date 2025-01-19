@@ -22,4 +22,4 @@ jobs:
       - name: Create the package
         run: dotnet pack --configuration Release src/Blazor.FloatingUI
       - name: Publish the package to GPR
-        run: dotnet nuget push src/Blazor.FloatingUI
+        run: dotnet nuget push src/Blazor.FloatingUI --source https://api.nuget.org/v3/index.json --api-key $NUGET_API_KEY 
