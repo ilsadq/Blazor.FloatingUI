@@ -4,10 +4,10 @@
 
 @code {
 
-    [Parameter] public required RenderFragment ChildContent { get; set; }
-    [Parameter, EditorRequired] public required string ContentId { get; set; }
-    [Parameter, EditorRequired] public required string TriggerId { get; set; }
-    [Parameter, EditorRequired] public required FloatingSettingsModel Settings { get; set; }
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = null!;
+    [Parameter, EditorRequired] public string ContentId { get; set; } = null!;
+    [Parameter, EditorRequired] public string TriggerId { get; set; } = null!;
+    [Parameter, EditorRequired] public FloatingSettingsModel Settings { get; set; } = null!;
 
     [Inject] public required FloatingJsProvider FloatingJs { get; set; }
 
@@ -23,7 +23,7 @@
 
     public ValueTask DisposeAsync()
     {
-        return FloatingJs.DisposeAsync();
+        return FloatingJs.Remove(TriggerId);
     }
 
 }

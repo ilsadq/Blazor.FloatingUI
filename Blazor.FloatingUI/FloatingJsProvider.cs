@@ -4,23 +4,31 @@ namespace Blazor.FloatingUI;
 
 public class FloatingJsProvider(IJSRuntime js) : IFloatingJsProvider
 {
-    private readonly Task<IJSObjectReference> _module = js.InvokeAsync<IJSObjectReference>("import", "./_content/Blazor.FloatingUI/floating.module.js").AsTask();
-
-    public async Task ComputePosition(string contentId, string triggerId, FloatingSettingsModel settings)
+    /// <summary>
+    /// Computes coordinates to position a floating element next to another element.
+    /// </summary>
+    /// <param name="contentId">
+    ///     This is the element that floats next to the reference element,
+    ///     remaining anchored to it. This is the popover or tooltip itself.
+    /// </param>
+    /// <param name="triggerId">
+    ///     Also known as the anchor element, this is the element that is being referred to for positioning.
+    ///     Often this is a button that triggers a floating popover like a tooltip or menu.
+    /// </param>
+    /// <param name="settings">
+    ///     Floating UI settings <see href="https://floating-ui.com/docs/middleware"/>
+    /// </param>
+    public ValueTask ComputePosition(string contentId, string triggerId, FloatingSettingsModel settings)
     {
-        var js = await _module;
-        await js.InvokeVoidAsync("computePosition", contentId, triggerId, settings);
+        return js.InvokeVoidAsync("blazorFloatingUI.computePosition", contentId, triggerId, settings);
     }
 
-    public async Task Remove()
+    /// <summary>
+    ///     Remove floating tracking event
+    /// </summary>
+    /// <param name="id">Target element ID</param>
+    public ValueTask Remove(string id)
     {
-        var js = await _module;
-        await js.InvokeVoidAsync("clean");
-    }
-
-    public ValueTask DisposeAsync()
-    {
-        _module.Dispose();
-        return ValueTask.CompletedTask;
+        return js.InvokeVoidAsync("blazorFloatingUI.clearAutoUpdate", id);
     }
 }

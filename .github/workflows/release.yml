@@ -3,32 +3,27 @@ name: Publish NuGet Package
 on:
   push:
     branches:
-      - main  # Укажите ветку, в которой изменения будут триггерить процесс
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    # Проверка репозитория
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Установить .NET SDK
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'  # Укажите нужную версию .NET SDK
+        dotnet-version: '8.0.0'
 
-    # Сборка проекта
     - name: Build project
       run: dotnet build --configuration Release
 
-    # Запуск тестов
     - name: Run tests
       run: dotnet test --no-build --verbosity normal
 
-    # Публикация NuGet-пакета
     - name: Publish to NuGet
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}

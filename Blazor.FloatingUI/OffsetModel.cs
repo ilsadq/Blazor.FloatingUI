@@ -1,4 +1,4 @@
-﻿namespace Blazor.FloatingUI.Models;
+﻿namespace Blazor.FloatingUI;
 
 public class OffsetModel
 {

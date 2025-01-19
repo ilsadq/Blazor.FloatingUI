@@ -1,0 +1,22 @@
+{
+  "name": "blazor.floatingui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "FloatingScripts.razor.js",
+  "scripts": {
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilsadq/Blazor.FloatingUI.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "vite": "^6.0.7",
+    "path": "^0.12.7"
+  },
+  "dependencies": {
+    "@floating-ui/core": "1.6.9",
+    "@floating-ui/dom": "1.6.13"
+  }
+}

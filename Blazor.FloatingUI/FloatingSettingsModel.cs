@@ -1,6 +1,4 @@
-﻿using Blazor.FloatingUI.Models;
-
-namespace Blazor.FloatingUI;
+﻿namespace Blazor.FloatingUI;
 
 public class FloatingSettingsModel
 {

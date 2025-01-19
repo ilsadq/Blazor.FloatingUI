@@ -1,6 +1,6 @@
 ﻿namespace Blazor.FloatingUI;
 
-public interface IFloatingJsProvider : IAsyncDisposable
+public interface IFloatingJsProvider
 {
     /// <summary>
     /// Computes coordinates to position a floating element next to another element.
@@ -16,10 +16,10 @@ public interface IFloatingJsProvider : IAsyncDisposable
     /// <param name="settings">
     ///
     /// </param>
-    public Task ComputePosition(string contentId, string triggerId, FloatingSettingsModel settings);
+    public ValueTask ComputePosition(string contentId, string triggerId, FloatingSettingsModel settings);
 
     /// <summary>
     /// Remove floating tracking event
     /// </summary>
-    public Task Remove();
+    public ValueTask Remove(string id);
 }
