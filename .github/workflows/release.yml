@@ -1,32 +1,35 @@
-name: Build and Publish .NET Package
+name: CI/CD: Build and Publish NuGet Package
 
 on:
   release:
     types: [created]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
 
-      - name: Build the project
-        run: dotnet build --configuration Release
+    - name: Build project
+      run: dotnet build ./src/Blazor.FloatingUI --configuration Release
 
-      - name: Pack the project
-        run: dotnet pack --configuration Release --output ./artifacts src/Blazor.FloatingUI
+    - name: Pack and verify NuGet package
+      run: |
+        dotnet pack ./src/Blazor.FloatingUI --configuration Release
+        ls ./src/Blazor.FloatingUI/bin/Release/*.nupkg
 
-      - name: Publish package to GitHub Packages
-        run: dotnet nuget push ./artifacts/*.nupkg --source "github" --api-key ${{ secrets.NUGET_API_KEY }}
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
+    - name: Publish to NuGet
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: |
+        dotnet nuget push ./src/Blazor.FloatingUI/bin/Release/*.nupkg \
+          --source https://api.nuget.org/v3/index.json \
+          --api-key $NUGET_API_KEY
 
