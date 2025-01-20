@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -9,18 +8,28 @@
         <Authors>adequate</Authors>
         <Company>$(Authors)</Company>
         <Description>A C# wrapper for JavaScript library to position floating elements and create interactions for them.</Description>
-        <PackageIcon>Icon.png</PackageIcon>
         <PackageTags>Blazor,Floating,FloatinUI,UI,Dropdown,Combobox</PackageTags>
         <Version>1.1.0</Version>
         <PackageProjectUrl>https://github.com/ilsadq/Blazor.FloatingUI</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ilsadq/Blazor.FloatingUI</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseUrl>https://github.com/ilsadq/Blazor.FloatingUI/blob/main/LICENSE</PackageLicenseUrl>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.4"/>
     </ItemGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+        <TargetFramework>net8.0</TargetFramework>
+        <PackageIcon>Icon.png</PackageIcon>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0'">
+        <TargetFramework>net9.0</TargetFramework>
+        <PackageIcon>Icon.png</PackageIcon>
+    </PropertyGroup>
 
     <ItemGroup>
         <SupportedPlatform Include="browser"/>
