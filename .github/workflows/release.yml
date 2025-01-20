@@ -1,5 +1,4 @@
-name:
-  CI/CD: Build and Publish NuGet Package
+name: Build and Publish NuGet Package
 
 on:
   release:
