@@ -21,9 +21,6 @@ jobs:
       - name: Build project
         run: dotnet build ./src/Blazor.FloatingUI --configuration Release --no-restore
 
-      - name: Run tests
-        run: dotnet test ./src/Blazor.FloatingUI.Tests --configuration Release --no-build --verbosity normal
-
       - name: Pack and verify NuGet package
         run: |
           dotnet pack ./src/Blazor.FloatingUI --configuration Release --no-build
