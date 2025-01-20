@@ -1,8 +1,6 @@
 name: Build and Publish NuGet Package
 
-on:
-  release:
-    types: [ created ]
+on: workflow_dispatch
 
 jobs:
   build:
