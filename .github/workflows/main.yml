@@ -1,0 +1,40 @@
+name: Build and Publish NuGet Package
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./src/Blazor.FloatingUI
+
+      - name: Build project
+        run: dotnet build ./src/Blazor.FloatingUI --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test ./src/Blazor.FloatingUI.Tests --configuration Release --no-build --verbosity normal
+
+      - name: Pack and verify NuGet package
+        run: |
+          dotnet pack ./src/Blazor.FloatingUI --configuration Release --no-build
+          ls ./src/Blazor.FloatingUI/bin/Release/*.nupkg
+
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push ./src/Blazor.FloatingUI/bin/Release/*.nupkg \
+            --source https://api.nuget.org/v3/index.json \
+            --api-key $NUGET_API_KEY
