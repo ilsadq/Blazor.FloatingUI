@@ -30,14 +30,15 @@
         <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Content Remove="FloatingScripts.razor.js"/>
-        <None Remove="FloatingScripts.razor.js"/>
-    </ItemGroup>
+    <Target Name="RemoveFloatingScripts" BeforeTargets="BeforeBuild">
+        <ItemGroup>
+            <None Remove="FloatingScripts.razor.js"/>
+            <Content Remove="package.json"/>
+            <Content Remove="package-lock.json"/>
+        </ItemGroup>
 
-    <ItemGroup>
-        <None Include="FloatingScripts.razor.js" Pack="false" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never"/>
-    </ItemGroup>
+        <Message Importance="high" Text="Start remove npm dependencies"/>
+    </Target>
 
     <ItemGroup>
         <None Update="Icon.png">
@@ -46,16 +47,15 @@
         </None>
     </ItemGroup>
 
-    <!-- Minify JS -->
-    <!--    <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">-->
-    <!--        <Exec Command="npm ci" Condition="'$(RestorePackagesWithLockFile)' == 'true'"/>-->
-    <!--        <Exec Command="npm install" Condition="'$(RestorePackagesWithLockFile)' != 'true'"/>-->
-    <!--        <Touch Files="node_modules/.install-stamp" AlwaysCreate="true"/>-->
-    <!--    </Target>-->
+    <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
+        <Exec Command="npm ci" Condition="'$(RestorePackagesWithLockFile)' == 'true'"/>
+        <Exec Command="npm install" Condition="'$(RestorePackagesWithLockFile)' != 'true'"/>
+        <Touch Files="node_modules/.install-stamp" AlwaysCreate="true"/>
+    </Target>
 
-    <!--    <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall">-->
-    <!--        <Exec Command="npm run build"/>-->
-    <!--    </Target>-->
+    <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall">
+        <Exec Command="npm run build"/>
+    </Target>
 
-    <!--    <Target Name="PrePack" DependsOnTargets="NpmRunBuild" BeforeTargets="Pack"/>-->
+    <Target Name="PrePack" DependsOnTargets="NpmRunBuild" BeforeTargets="BeforeRebuild"/>
 </Project>
