@@ -9,11 +9,11 @@
         <Company>$(Authors)</Company>
         <Description>A C# wrapper for JavaScript library to position floating elements and create interactions for them.</Description>
         <PackageTags>Blazor,Floating,FloatinUI,UI,Dropdown,Combobox</PackageTags>
-        <Version>1.1.1</Version>
+        <Version>1.1.2</Version>
         <PackageProjectUrl>https://github.com/ilsadq/Blazor.FloatingUI</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ilsadq/Blazor.FloatingUI</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageLicenseUrl>https://github.com/ilsadq/Blazor.FloatingUI/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
 
@@ -54,6 +54,10 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\" />
     </ItemGroup>
 
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
