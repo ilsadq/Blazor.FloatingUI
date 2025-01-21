@@ -39,7 +39,7 @@
         <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
-    <Target Name="RemoveFloatingScripts" BeforeTargets="BeforeBuild">
+    <Target Name="RemoveFloatingScripts" BeforeTargets="PrePack">
         <ItemGroup>
             <None Remove="FloatingScripts.razor.js"/>
             <Content Remove="package.json"/>
