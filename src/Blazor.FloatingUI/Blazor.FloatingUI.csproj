@@ -66,5 +66,5 @@
         <Exec Command="npm run build"/>
     </Target>
 
-    <Target Name="PrePack" DependsOnTargets="NpmRunBuild" BeforeTargets="BeforeRebuild"/>
+    <Target Name="PrePack" DependsOnTargets="NpmRunBuild" BeforeTargets="BeforeBuild"/>
 </Project>
