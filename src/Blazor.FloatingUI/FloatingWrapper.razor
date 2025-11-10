@@ -1,27 +1,25 @@
-@TriggerTemplate(TriggerId)
+@TargetTemplate(TargetId)
 
 @if (IsOpen)
 {
     <SectionContent SectionId="FloatingConstants.FloatingSection">
-        <FloatingContentWrapper ContentId="@ContentId"
-                                TriggerId="@TriggerId"
+        <FloatingContentWrapper TargetId="@TargetId"
                                 Settings="_settings">
-            @ContentTemplate(ContentId)
+            @ContentTemplate
         </FloatingContentWrapper>
     </SectionContent>
 }
 
 @code {
 
-    private string TriggerId => $"T{GetHashCode()}";
-    private string ContentId => $"C{GetHashCode()}";
-
+    private string TargetId => $"T{GetHashCode()}";
+   
     private FloatingSettingsModel _settings = FloatingSettingsModel.Default;
 
     #region Props
 
-    [Parameter] public required RenderFragment<string> TriggerTemplate { get; set; }
-    [Parameter] public required RenderFragment<string> ContentTemplate { get; set; }
+    [Parameter] public required RenderFragment<string> TargetTemplate { get; set; }
+    [Parameter] public required RenderFragment ContentTemplate { get; set; }
     [Parameter] public bool IsOpen { get; set; }
 
     /// <summary>

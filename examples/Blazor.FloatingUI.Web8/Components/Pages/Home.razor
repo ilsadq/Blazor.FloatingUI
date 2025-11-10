@@ -7,21 +7,18 @@
 Welcome to your new app.
 
 <FloatingWrapper IsOpen="_isOpen">
-    <TriggerTemplate>
-        <button @onclick="() => _isOpen = true"
-                id="@context">
+    <TargetTemplate>
+        <button @onclick="() => _isOpen = true" id="@context">
             CLICK ME
         </button>
-    </TriggerTemplate>
+    </TargetTemplate>
     <ContentTemplate>
-        <div id="@context"
-             class="floating__content__wrapper"
-             tabindex="0"
-             @onblur="() => _isOpen = false">
+        <div class="floating__content__wrapper"
+             tabindex="0">
             <ul>
                 @foreach (var item in Enumerable.Range(0, 10))
                 {
-                    <li @onclick="ClickHandler">
+                    <li @onclick="@ClickHandler">
                         Item @item
                     </li>
                 }

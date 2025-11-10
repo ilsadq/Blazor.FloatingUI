@@ -1,13 +1,10 @@
 using Blazor.FloatingUI.Web8.Components;
-using Blazor.FloatingUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
-builder.Services.AddScoped<FloatingJsProvider>();
 
 var app = builder.Build();
 

@@ -1,10 +1,3 @@
-[id*="floating-content-"] {
-    position: absolute;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 10px;
-}
-
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -57,11 +50,9 @@ h1:focus {
     border-color: #929292;
 }
 
-
-.floating__content__wrapper {
+floating-wrapper {
     position: absolute;
-    left: -9999px;
-    top: -9999px;
-    box-sizing: border-box;
-    overflow: auto;
+    left: 0;
+    top: 0;
+    transform: translate(var(--floating-left), var(--floating-top));
 }

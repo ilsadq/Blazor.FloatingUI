@@ -2,7 +2,7 @@
   "name": "blazor.floatingui",
   "version": "1.0.0",
   "description": "",
-  "main": "FloatingScripts.razor.js",
+  "main": "FloatingScripts.js",
   "scripts": {
     "build": "vite build"
   },

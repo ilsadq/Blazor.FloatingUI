@@ -1,29 +1,24 @@
-@implements IAsyncDisposable
+@using System.Text.Json
 
-@ChildContent
+<floating-wrapper target-id="@TargetId" settings="@_settings">
+    @ChildContent
+</floating-wrapper>
 
 @code {
 
+    private string _settings = null!;
+    private static readonly JsonSerializerOptions SerializerOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    };
+    
     [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = null!;
-    [Parameter, EditorRequired] public string ContentId { get; set; } = null!;
-    [Parameter, EditorRequired] public string TriggerId { get; set; } = null!;
-    [Parameter, EditorRequired] public FloatingSettingsModel Settings { get; set; } = null!;
+    [Parameter, EditorRequired] public string TargetId { get; set; } = null!;
 
-    [Inject] public required FloatingJsProvider FloatingJs { get; set; }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    [Parameter, EditorRequired]
+    public FloatingSettingsModel Settings
     {
-        if (firstRender)
-        {
-            await FloatingJs.ComputePosition(ContentId, TriggerId, Settings);
-        }
-
-        await base.OnAfterRenderAsync(firstRender);
-    }
-
-    public ValueTask DisposeAsync()
-    {
-        return FloatingJs.Remove(TriggerId);
+        set => _settings = JsonSerializer.Serialize(value, SerializerOptions);
     }
 
 }

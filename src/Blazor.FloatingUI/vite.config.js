@@ -5,7 +5,7 @@ export default defineConfig({
     build: {
         outDir: "./wwwroot",
         lib: {
-            entry: resolve(__dirname, "./FloatingScripts.razor.js"),
+            entry: resolve(__dirname, "./FloatingScripts.js"),
             name: "FloatingUI",
             fileName: "FloatingScripts",
             formats: ["iife"]
