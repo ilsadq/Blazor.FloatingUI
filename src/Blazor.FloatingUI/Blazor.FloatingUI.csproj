@@ -9,7 +9,7 @@
         <Company>$(Authors)</Company>
         <Description>A C# wrapper for JavaScript library to position floating elements and create interactions for them.</Description>
         <PackageTags>Blazor,Floating,FloatinUI,UI,Dropdown,Combobox</PackageTags>
-        <Version>1.1.3</Version>
+        <Version>1.5.0</Version>
         <PackageProjectUrl>https://github.com/ilsadq/Blazor.FloatingUI</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ilsadq/Blazor.FloatingUI</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
