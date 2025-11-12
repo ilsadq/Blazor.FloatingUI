@@ -4,17 +4,35 @@ All documentation on this site and parameters were taken from this documentation
 
 [Visit FloatingUI website](https://floating-ui.com/)
 
+---
+
 ### Installation
 
-`dotnet add package Blazor.FloatingUI`
+```shell
+dotnet add package Blazor.FloatingUI
+```
 
-Program.cs
+---
 
-`builder.Services.AddScoped<FloatingJsProvider>();`
+#### App.razor
 
-MainLayout.razor
+```htmlinblazor
+<SectionOutlet SectionId="FloatingConstants.FloatingSection"/>
+<script src="@Assets["_content/Blazor.FloatingUI/FloatingScripts.iife.js"]"></script>
+```
 
-Add `<SectionOutlet SectionId="FloatingConstants.FloatingSection"/>`
+#### app.css
+
+```css
+floating-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(var(--floating-left), var(--floating-top));
+}
+```
+
+---
 
 ### Description
 
@@ -24,9 +42,13 @@ You can use this library to create dropdowns, combo boxes, hints, etc.
 
 This library is more intended for use with other libraries or custom components.
 
+---
+
 ### Basic Principles
 
 To bind a floating window to your trigger, you must pass `@context` in the id field; otherwise, nothing will work.
+
+---
 
 ### Examples
 
@@ -41,8 +63,7 @@ Basic `FloatingWrapper` example where there are no enhancements such as focus ch
         </button>
     </TriggerTemplate>
     <ContentTemplate>
-        <div id="@context"
-             class="floating__content__wrapper"
+        <div class="floating__content__wrapper"
              tabindex="0"
              @onblur="() => _isOpen = false">
             <ul>
@@ -68,6 +89,8 @@ Basic `FloatingWrapper` example where there are no enhancements such as focus ch
 
 }
 ```
+
+---
 
 If you need additional information, feel free to ask.
 
