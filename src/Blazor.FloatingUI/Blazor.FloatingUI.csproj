@@ -15,6 +15,7 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <PackageIcon>Logo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
