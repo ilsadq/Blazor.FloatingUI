@@ -4,7 +4,8 @@
 {
     <SectionContent SectionId="FloatingConstants.FloatingSection">
         <FloatingContentWrapper TargetId="@TargetId"
-                                Settings="_settings">
+                                Settings="_settings"
+                                OnDismiss="OnDismiss">
             @ContentTemplate
         </FloatingContentWrapper>
     </SectionContent>
@@ -21,6 +22,21 @@
     [Parameter] public required RenderFragment<string> TargetTemplate { get; set; }
     [Parameter] public required RenderFragment ContentTemplate { get; set; }
     [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback OnDismiss { get; set; }
+
+    [Parameter]
+    public bool DismissOnOutsideClick
+    {
+        get => _settings.DismissOnOutsideClick;
+        set => _settings.DismissOnOutsideClick = value;
+    }
+
+    [Parameter]
+    public bool DismissOnEscape
+    {
+        get => _settings.DismissOnEscape;
+        set => _settings.DismissOnEscape = value;
+    }
 
     /// <summary>
     /// <see cref="FloatingStrategyType"/>

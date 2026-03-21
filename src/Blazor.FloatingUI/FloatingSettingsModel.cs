@@ -42,6 +42,10 @@ public class FloatingSettingsModel
 
     public bool AncestorScroll { get; set; }
 
+    public bool DismissOnOutsideClick { get; set; }
+
+    public bool DismissOnEscape { get; set; }
+
     public static FloatingSettingsModel Default => new()
     {
         Strategy = FloatingStrategyType.Absolute,

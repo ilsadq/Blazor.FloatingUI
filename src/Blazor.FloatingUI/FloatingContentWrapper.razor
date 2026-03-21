@@ -1,24 +1,70 @@
 @using System.Text.Json
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
+@inject IJSRuntime JSRuntime
 
-<floating-wrapper target-id="@TargetId" settings="@_settings">
+<floating-wrapper @ref="_elementReference" target-id="@TargetId" settings="@_settings">
     @ChildContent
 </floating-wrapper>
 
 @code {
 
     private string _settings = null!;
+    private ElementReference _elementReference;
+    private DotNetObjectReference<FloatingContentWrapper>? _dotNetRef;
+    private bool _hasDismiss;
+
     private static readonly JsonSerializerOptions SerializerOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
-    
+
     [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = null!;
     [Parameter, EditorRequired] public string TargetId { get; set; } = null!;
+    [Parameter] public EventCallback OnDismiss { get; set; }
 
     [Parameter, EditorRequired]
     public FloatingSettingsModel Settings
     {
-        set => _settings = JsonSerializer.Serialize(value, SerializerOptions);
+        set
+        {
+            _hasDismiss = value.DismissOnOutsideClick || value.DismissOnEscape;
+            _settings = JsonSerializer.Serialize(value, SerializerOptions);
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || !_hasDismiss)
+        {
+            return;
+        }
+
+        _dotNetRef = DotNetObjectReference.Create(this);
+        await JSRuntime.InvokeVoidAsync("FloatingUI.setupDismiss", _elementReference, TargetId, _settings, _dotNetRef);
+    }
+
+    [JSInvokable]
+    public async Task OnDismissed()
+    {
+        await OnDismiss.InvokeAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_dotNetRef is not null)
+        {
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("FloatingUI.cleanupDismiss", _elementReference);
+            }
+            catch
+            {
+                // Element may already be disconnected
+            }
+
+            _dotNetRef.Dispose();
+        }
     }
 
 }
