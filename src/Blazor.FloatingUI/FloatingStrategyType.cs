@@ -3,5 +3,5 @@
 public readonly record struct FloatingStrategyType
 {
     public const string Absolute = "absolute";
-    public const string Fixed = "fixes";
+    public const string Fixed = "fixed";
 }
